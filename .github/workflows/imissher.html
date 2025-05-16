@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Miss Her</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(/imissher.jpg);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 80%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            color: #000000;
+            animation: pulse 3s infinite ease-in-out, fadeIn 2s ease-in;
+            transition: opacity 1s, transform 1s;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        h1:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* Button to change text */
+        .change-text-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ffdbed;
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .change-text-btn:hover {
+            background-color: #f9e7f7;
+        }
+
+        /* Soft, glowing effect for the button */
+        .change-text-btn:active {
+            box-shadow: 0 0 15px rgba(255, 219, 237, 0.8);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="message">I miss her</h1>
+        <button class="change-text-btn" onclick="changeText()">Click</button>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="background-sounds.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        // Start background music when the page loads
+        window.onload = () => {
+            const audio = document.getElementById('background-music');
+            audio.play();
+        };
+
+        // Function to change the text on button click
+        function changeText() {
+            const phrases = [
+                "I miss her😓",
+                "I miss you🥺🥺🥺",
+                "It feels empty without her😣😏",
+                "Where is she?😟",
+                "I can't stop thinking about her😔😓"
+            ];
+            
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            const messageElement = document.getElementById('message');
+            
+            messageElement.textContent = randomPhrase;
+
+            // Fade effect for the text change
+            messageElement.style.opacity = '0';
+            setTimeout(() => {
+                messageElement.style.transition = 'opacity 1s ease-in-out';
+                messageElement.style.opacity = '1';
+            }, 100);
+        }
+    </script>
+</body>
+</html>
